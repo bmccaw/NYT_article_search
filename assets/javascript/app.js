@@ -4,13 +4,32 @@ let startYear;
 let endYear;
 let resultsArr = [];
 let numOfResults;
+let todaysDate;
+
+function getTodayDate(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth();
+    var yyyy = today.getFullYear();
+    todaysDate = dd.toString() + mm.toString() + yyyy.toString()
+} 
 
 $("#searchButton").on("click", function (event) {
     event.preventDefault();
     search = $("#searchterm").val();
-    startYear = $("#startYear").val() + "0101";
-    endYear = $("#endYear").val() + "0101";
-    numOfResults =$("#numberrecords").val();
+    if ($("#startYear").val() === "") {
+        startYear = 11111111
+    }
+
+    if ($("#endYear").val() === "") {
+        getTodayDate()
+        endYear = todaysDate;
+    }
+    numOfResults = $("#numberrecords").val();
+    
+    if (numOfResults === ""){
+        numOfResults = 10;
+    }
 
 
     console.log(search)
@@ -29,8 +48,9 @@ $("#searchButton").on("click", function (event) {
         method: 'GET',
     }).done(function (result) {
         console.log(result);
-        
-        for(i=0; i<numOfResults; i++){
+        console.log(numOfResults)
+
+        for (i = 0; i < numOfResults; i++) {
             resultsArr.push(result);
             console.log(result.response.docs[i].headline.main)
             let headlineLink = $("<a>").attr("href", result.response.docs[i].web_url).text(result.response.docs[i].headline.main).attr("class", "links")
