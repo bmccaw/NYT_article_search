@@ -16,15 +16,15 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 bg-info text-center">
+            <div class="col-sm-12 bg-info text-center border rounded" id="heading">
                 <h1>New York Times Search</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
         </div>
-        <div class="row border">
-            <div class="col-sm-12">
+        <div class="container">  
+        <div class="row border rounded">
+            <div class="col-sm-12 bg-light">
+                <h4>Search Parameters</h4>
         <form>
         <div class="form-group">
             <label for="exampleInputEmail1">Search Term</label>
@@ -42,18 +42,22 @@
             <label for="exampleInputPassword1">End Year</label>
             <input type="text" class="form-control" id="endYear" placeholder="ex:2001">
           </div>
-          <button type="submit" class="btn btn-primary" id="searchButton">Search</button>
-          <button type="submit" class="btn btn-primary" id="clearButton">Clear Results</button>
+          <button type="submit" class="btn btn-primary m-2" id="searchButton">Search</button>
+          <button type="submit" class="btn btn-primary m-2" id="clearButton">Clear Results</button>
         </form>
             </div>
         </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-sm-12">
             </div>
         </div>
-        <div class="row border">
+        </div>
+        <div class="container">
+        <div class="row border rounded">
             <div class="col-sm-12">
-
+                <h4>Results</h4>
                 <div id="results"></div>
             </div>
         </div>
